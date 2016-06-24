@@ -6,7 +6,8 @@ use App\Basket\Basket as Basket;
 use App\Models\Product as Product;
 use App\Helper\Input as Input;
 use App\Helper\Redirect as Redirect;
-
+use App\Models\Order as Order;
+use App\Models\OrderProduct as OrderProduct;
 
 class Cart  extends Controller
 {
@@ -14,12 +15,14 @@ class Cart  extends Controller
 
 	protected $product;
 
+	protected $order;
 
 
 	function __construct() {
 
 		$this->product = new Product;
 		$this->basket = new Basket;
+		$this->order = new Order;
 
 	
 	}
@@ -59,6 +62,34 @@ class Cart  extends Controller
 		
 		return Redirect::to('cart/index');
 
+
+	}
+
+	public function order()
+	{
+
+		$hash  = bin2hex(rand(1,9));
+
+		$order = $this->order->create([
+				'hash' => $hash,
+				'paid' => false,
+				'user_id' => 1
+			]);
+
+
+		$items = $this->basket->all() ;
+
+		foreach ($items as $item) {
+			OrderProduct::create([
+				'order_id' => $order->id,
+				'product_id' => $item->id,
+				'qty' => $item->qty
+			]);
+		}
+
+		$this->basket->clear();
+
+		return Redirect::to('order/show/'.$order->id);
 
 	}
 

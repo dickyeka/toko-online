@@ -42,7 +42,7 @@
 				<td><?= $data['total'] ?></td>
 			</tr>
 		</table>
-		<a class="btn btn-primary">Cekout</a>
+		<a class="btn btn-primary" href="<?= url('cart/order') ?>">Cekout</a>
 	</div>
 </div>
 
