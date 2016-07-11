@@ -41,27 +41,27 @@
 
 <div class="row">
 	<div class="col-md-6">
-	<h2>Cara Bayar</h2>
-	<ol class="rekening">
-		<li>
-			<p>Pilih salah satu rekening di bawah:<br>
-			<strong>BCA: 7860099939 A/N PT Dicky Eka S</strong><br>
-			<strong>Mandiri: 1060511575188 A/N Dicky Eka S</strong><br>
-			</p>
-		</li>
-		<li>
-			<p>Setelah transfer, isi kolom Konfirmasi Pembayaran di samping ini atau dengan cara: <br>
-			<strong>Login &gt; My Account &gt; Purchase History &gt; Invoice Pembelian</strong></p>
-		</li>
-		<li>
-			<p>Konfirmasi pembayaran akan diproses dalam waktu 1 x 24 jam, lalu voucher dapat diprint melalui purchase history atau email.</p>
-		</li>
-	</ol>
+		<h2>Cara Bayar</h2>
+		<ol class="rekening">
+			<li>
+				<p>Pilih salah satu rekening di bawah:<br>
+				<strong>BCA: 7860099939 A/N PT Dicky Eka S</strong><br>
+				<strong>Mandiri: 1060511575188 A/N Dicky Eka S</strong><br>
+				</p>
+			</li>
+			<li>
+				<p>Setelah transfer, isi kolom Konfirmasi Pembayaran di samping ini atau dengan cara: <br>
+				<strong>Login &gt; My Account &gt; Purchase History &gt; Invoice Pembelian</strong></p>
+			</li>
+			<li>
+				<p>Konfirmasi pembayaran akan diproses dalam waktu 1 x 24 jam, lalu voucher dapat diprint melalui purchase history atau email.</p>
+			</li>
+		</ol>
 	</div>
 
 	<div class="col-md-6">
 		<div class="well">
-			<form action="" method="POST" role="form">
+			<form action="<?= url('order/pay/'.$data['order']->id)?>" method="POST" role="form" enctype="multipart/form-data">
 				<legend>Konfirmasi Pembayaran</legend>
 			
 				<div class="form-group">
@@ -76,7 +76,7 @@
 
 				<div class="form-group">
 					<label for="">Bukti Transfer</label>
-					<input type="file" class="form-control" >
+					<input type="file" class="form-control" name="img" >
 				</div>
 			
 				

@@ -4,6 +4,8 @@ session_start();
 
 use App\Core\App as App;
 use App\Core\Controller as Controller;
+use App\Helper\Input as Input;
+use App\Helper\Session as Session;
 
 //Autoload
 require __DIR__.'/../vendor/autoload.php';
@@ -46,6 +48,6 @@ function str_limit($str,$limit)
 }
 
 $app = new App;
-
+$session = new Session;
 
 
