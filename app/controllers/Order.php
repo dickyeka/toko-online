@@ -7,6 +7,7 @@ use App\Helper\Input as Input;
 use App\Helper\Image as Image;
 use  App\Models\Payment as Payment;
 use App\Helper\Redirect as Redirect;
+use App\Helper\Session as Session;
 
 class Order  extends Controller
 {
@@ -22,6 +23,13 @@ class Order  extends Controller
 		$this->order = new OrderModel;
 		$this->orderProduct = new OrderProduct;
 		$this->image = new Image;
+	}
+
+	public function index()
+	{
+		$orders = $this->order->where('user_id',Session::get('user'))->get();
+		$this->view('order/index',['orders'=>$orders]);		
+
 	}
 
 	public function show($id){

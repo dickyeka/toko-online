@@ -69,7 +69,7 @@
 				<thead>
 					<tr>
 						<th width="30%">Name</th>
-						<th>Gambar</th>
+						<th width="20%">Gambar</th>
 						<th>Harga</th>
 						<th>Stok</th>
 						<th>Toko</th>
@@ -82,7 +82,7 @@
 					<tr>
 						<td><?= $product->title ?></td>
 						<td>
-							<img src="<?= $product->image ?>" class="img-responsive" alt="Image">
+							<img src="<?= asset('images/'.$product->image) ?>" class="img-responsive" alt="Image">
 						</td>
 						<td><?= $product->price ?></td>
 						<td><?= $product->stok ?></td>

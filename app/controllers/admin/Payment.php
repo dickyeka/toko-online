@@ -41,7 +41,7 @@ class Payment  extends Controller
 							->update([
 								'paid' =>true
 							]);
-		Redirect::to('payment/index');
+		Redirect::to('admin/payment/index');
 
 	}
 

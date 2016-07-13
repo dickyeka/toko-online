@@ -13,9 +13,12 @@ class Home extends Controller
 
     public function index()
     {
-        $products = $this->product->all();
 
- 		$this->view('home/index',['products'=>$products]);
+        $new_products = $this->product->orderBy('id','DESC')->take('5')->get();
+
+        $products = $this->product->take('5')->get();
+
+ 		$this->view('home/home',['new_products'=>$new_products,'products'=>$products]);
         
     }
 
