@@ -33,7 +33,7 @@ class Image{
 	      
 	      if(empty($errors)==true){
 	         move_uploaded_file($file_tmp,"images/".$file_name);
-	         return true;
+	         return $file_name;
 	      }else{
 
 	      	return false;

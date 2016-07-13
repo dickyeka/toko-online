@@ -6,15 +6,32 @@ use App\Helper\Session as Session;
 
 class View {
 
+	protected $admin;
+
+	protected $session;
+
+	function __construct() {
+		$this->session = new Session;
+		$this->admin = $this->session->get('admin'); 
+	}
+
 	public function getNav()
 	{
-		$session = new Session;
-		include '../app/views/template/nav.php';
+		$session = $this->session;
+		if ($this->admin){
+			include '../app/views/admin/template/nav.php';
+		}else{
+			include '../app/views/template/nav.php';
+		}
 	}
 
 	public function getFooter()
 	{
-		include '../app/views/template/footer.php';	
+		if ($this->admin){
+			include '../app/views/admin/template/footer.php';	
+		}else{
+			include '../app/views/template/footer.php';	
+		}
 	}
 
 	

@@ -69,12 +69,15 @@ class Cart  extends Controller
 	public function order()
 	{
 		if (Session::get('user')){
-			$hash  = bin2hex(rand(1,9));
+			$hash  = date("Ydmhis");
+
+			$total = $this->basket->subTotal();
 
 			$order = $this->order->create([
 					'hash' => $hash,
 					'paid' => false,
-					'user_id' => Session::get('user')
+					'user_id' => Session::get('user'),
+					'total' => $total
 				]);
 
 

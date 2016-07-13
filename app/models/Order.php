@@ -11,5 +11,10 @@ class Order extends Eloquent
 	 protected $fillable = ['hash','paid','user_id','total'];
 
 
+	 public function user(){
+	 	return $this->belongsTo('App\Models\User');
+	 }
+
+
 	 
 }
